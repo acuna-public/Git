@@ -12,7 +12,7 @@
 			$this->config = $config;
 		}
 		
-		abstract function getCommit ($repo, $id): Git\Commit;
+		abstract function getCommit ($data): Git\Commit;
 		abstract function createCommit ($repo, $text, $parent = 0);
 		abstract function readFile ($repo, $file): string;
 		

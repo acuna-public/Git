@@ -4,7 +4,7 @@
 	
 	class File extends \AssocArray {
 		
-		protected function getRequiredPairs (): array {
+		function getRequiredPairs (): array {
 			return ['name', 'modified'];
 		}
 		
