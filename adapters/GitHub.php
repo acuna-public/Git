@@ -95,8 +95,6 @@
 			if (isset ($data['message']))
 				throw new \GitException ($data['message']);
 			
-			$this->contentType = curl_getinfo ($curl, CURLINFO_CONTENT_TYPE);
-			
 			curl_close ($curl);
 			
 			return $data;
