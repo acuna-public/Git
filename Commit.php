@@ -12,7 +12,7 @@
 			$this->set ('id', $id);
 		}
 		
-		function setModified (long $modified) {
+		function setModified ($modified) {
 			$this->set ('modified', $modified);
 		}
 		
