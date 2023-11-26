@@ -93,7 +93,7 @@
 			$data = json_decode ($data, true);
 			
 			if (isset ($data['message']))
-				throw new \GitException ($data['message'], $data['code'], $file);
+				throw new \GitException ($data['message'], 403, $file);
 			
 			curl_close ($curl);
 			
