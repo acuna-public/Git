@@ -45,12 +45,12 @@
 		
 		function readFile ($repo, $file): string {
 			
-			$data = $this->request ('repos/'.$this->config['login'].'/'.$repo.'/contents/'.$file);
+			$data = $this->request ('repos/'.$this->config['login'].'/'.$repo.'/contents/'.$file, [], $file);
 			return base64_decode ($data['content']);
 			
 		}
 		
-		protected function request ($path, $params = []) {
+		protected function request ($path, $file = '', $params = []) {
 			
 			$curl = curl_init ();
 			
@@ -86,14 +86,14 @@
 			$data = curl_exec ($curl);
 			
 			if ($info['http_code'] and !in_array ($info['http_code'], [200]))
-				throw new \GitException ($data, $info['http_code']);
+				throw new \GitException ($data, $info['http_code'], $file);
 			elseif ($error = curl_error ($curl))
-				throw new \GitException ($error, curl_errno ($curl));
+				throw new \GitException ($error, curl_errno ($curl), $file);
 			
 			$data = json_decode ($data, true);
 			
 			if (isset ($data['message']))
-				throw new \GitException ($data['message']);
+				throw new \GitException ($data['message'], $data['code'], $file);
 			
 			curl_close ($curl);
 			
