@@ -2,13 +2,13 @@
 	
 	class GitException extends Exception {
 		
-		public $file = '';
+		public $fileName = '';
 		
 		function __construct ($mess, $code, $file) {
 			
 			parent::__construct ($mess, $code);
 			
-			$this->file = $file;
+			$this->fileName = $file;
 			
 		}
 		
