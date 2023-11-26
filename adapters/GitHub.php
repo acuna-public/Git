@@ -50,7 +50,7 @@
 			
 		}
 		
-		protected function request ($path, $file = '', $params = []) {
+		protected function request ($path, $params = [], $file = '') {
 			
 			$curl = curl_init ();
 			
