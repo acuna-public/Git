@@ -88,7 +88,7 @@
 			if ($info['http_code'] and !in_array ($info['http_code'], [200]))
 				throw new \GitException ($data, $info['http_code'], $file);
 			elseif ($error = curl_error ($curl))
-				throw new \GitException ($error, curl_errno ($curl), $file);
+				throw new \GitException ($error, 403, $file);
 			
 			$data = json_decode ($data, true);
 			
